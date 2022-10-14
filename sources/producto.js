@@ -4,6 +4,7 @@ class Producto{
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.precio = precio;
+        this.siguiente = null;
     }
 
     getCodigo(){
@@ -21,4 +22,11 @@ class Producto{
     getPrecio(){
         return this.precio;
     }
+
+    info() {
+		return `
+			<p>
+				${this.codigo}-. Producto: ${this.nombre}, Cantidad: ${this.cantidad}, Precio: ${this.precio}
+			</p>`
+	}
 }

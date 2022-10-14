@@ -1,36 +1,32 @@
 class Inventario{
     constructor(){
-        this.inventario = new Array();
+        this.primero = null;
     }
 
-    agregar(producto){
-        this.inventario.push(producto);
-    }
-
-    eliminar(codigo){
-        if(this.inventario.length>0){
-            for(let i=0; i<this.inventario.length; i++){
-                if(codigo == this.inventario[i].getCodigo()){
-                    this.inventario[i] = '';
-                    for(let x=i; x<this.inventario.length-1; x++){
-                        this.inventario[i] = this.inventario[i+1];
-                    }
-                    this.inventario.pop();
-                }
-            }
-        }else{
-            this.inventario.pop();
+    agregar(nuevo){
+        if (this.primero==null)
+            this.primero=nuevo;
+        else{
+            let temp=this.primero;
+        while (temp.siguiente!=null)
+            temp=temp.siguiente;
+            temp.siguiente=nuevo;
         }
     }
 
-    buscar(codigo){
-        for(let i=0; i<this.inventario.length-1; i++){
-            if(codigo == this.inventario[i].getCodigo()){
-                //Regresar objeto
-                return `Producto: ${this.inventario[i].getNombre()}, Cantidad: ${this.inventario[i].getCantidad()}, Precio: ${this.inventario[i].getPrecio()}$`;
+    eliminar(code){
+        
+    }
+
+    buscar(code){
+        let aux = this.primero;
+        while(aux !== null){
+            if(aux.codigo === code){
+                return aux;
             }
+            aux=aux.siguiente;
         }
-        return "Producto no encontrado..";
+        return null;
     }
 
     listar(){

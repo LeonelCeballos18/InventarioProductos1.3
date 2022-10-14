@@ -1,4 +1,3 @@
-
 let inventory = new Inventario();
 
 //agregar producto
@@ -10,7 +9,7 @@ btnAgregar.addEventListener('click', ()=>{
     let amount = document.getElementById('cantidad').value;
     let price = document.getElementById('costo').value;
     let product = new Producto(code, name, amount, price);
-    inventory.agregar(product);
+    inventory.agregar(product, code);
     alert("Producto agregado");
 })
 
@@ -24,8 +23,12 @@ btnEliminar.addEventListener('click', ()=>{
 const btnBuscar = document.getElementById('search');
 btnBuscar.addEventListener('click', ()=>{
     let code = document.getElementById('busqueda').value;
-    document.getElementById('resB').innerHTML +=  inventory.buscar(code);
-    //alert(inventory.buscar(code));
+    let busqueda = inventory.buscar(code);
+    if(busqueda !== null) {
+		document.getElementById('resB').innerHTML = busqueda.info();
+	} else {
+		document.getElementById('resB').innerHTML = "<p>Producto no encontrado.</p>";
+	}
 })
 
 const btnListar = document.getElementById('listar');
