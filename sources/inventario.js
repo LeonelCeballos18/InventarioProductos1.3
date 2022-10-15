@@ -15,7 +15,20 @@ class Inventario{
     }
 
     eliminar(code){
-        
+        let aux = this.primero;
+        if(this.primero !== null){
+            if(this.primero.codigo === code){
+                this.primero = null;
+                this.primero = aux.siguiente;
+            }
+            while(aux.siguiente != null){
+                if(aux.siguiente.codigo === code){
+                    aux.siguiente = aux.siguiente.siguiente;
+                    break;
+                }
+                aux = aux.siguiente;
+            }
+        }
     }
 
     buscar(code){
