@@ -44,9 +44,13 @@ class Inventario{
 
     listar(){
         let lista = "";
-        this.inventario.forEach((inv, i) => {
-            lista += `${this.inventario[i].getCodigo()}-. Producto: ${this.inventario[i].getNombre()}, Cantidad: ${this.inventario[i].getCantidad()},Precio: ${this.inventario[i].getPrecio()}$ <br>`;
-        });
+        let aux = this.primero;
+        if(this.primero != null){
+            while(aux != null){
+                lista+= `${aux.codigo}-. Producto: ${aux.nombre}, Cantidad: ${aux.cantidad}, Precio: ${aux.precio} <br>`
+                aux = aux.siguiente;
+            }
+        }
         return lista;
     }
 
