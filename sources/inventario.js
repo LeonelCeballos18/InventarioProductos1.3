@@ -55,10 +55,16 @@ class Inventario{
     }
 
     listadoInverso(){
-        let lista = "";
-        for(let i=this.inventario.length-1; i>=0; i--){
-            lista += `${this.inventario[i].getCodigo()}-. Producto: ${this.inventario[i].getNombre()}, Cantidad: ${this.inventario[i].getCantidad()},Precio: ${this.inventario[i].getPrecio()}$/ <br>`;
+        if(this.primero !== null){
+            return this.recursividad(this.primero)
         }
-        return lista;
+    }
+    
+    recursividad(nodo){
+        if(nodo.siguiente === null){
+            return nodo.primero;
+        }else{
+            return `${this.recursividad(nodo.siguiente)} ${nodo.codigo}-. Producto: ${nodo.nombre}, Cantidad: ${nodo.cantidad}, Precio: ${nodo.precio} <br>`;
+        }
     }
 }
